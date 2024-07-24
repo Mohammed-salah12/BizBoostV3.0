@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BizBoostV3.0/static/css/main.e5db7b0c.css",
-    "main.js": "/BizBoostV3.0/static/js/main.b207aaed.js",
+    "main.js": "/BizBoostV3.0/static/js/main.3d4a53c2.js",
     "static/js/453.ca47a58f.chunk.js": "/BizBoostV3.0/static/js/453.ca47a58f.chunk.js",
     "static/media/contactus.mp4": "/BizBoostV3.0/static/media/contactus.f5c55fa516453be3236d.mp4",
     "static/media/bussiness.mp4": "/BizBoostV3.0/static/media/bussiness.8145d78d3db21b78d525.mp4",
@@ -31,11 +31,11 @@
     "static/media/slick.woff": "/BizBoostV3.0/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/BizBoostV3.0/index.html",
     "main.e5db7b0c.css.map": "/BizBoostV3.0/static/css/main.e5db7b0c.css.map",
-    "main.b207aaed.js.map": "/BizBoostV3.0/static/js/main.b207aaed.js.map",
+    "main.3d4a53c2.js.map": "/BizBoostV3.0/static/js/main.3d4a53c2.js.map",
     "453.ca47a58f.chunk.js.map": "/BizBoostV3.0/static/js/453.ca47a58f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e5db7b0c.css",
-    "static/js/main.b207aaed.js"
+    "static/js/main.3d4a53c2.js"
   ]
 }
