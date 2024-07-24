@@ -31,7 +31,7 @@ import SignInOut from "./componnent/SignInOut";
 
 function App() {
   return (
-    <Router basename="/BizBoostV2.0">
+    <Router basename="/BizBoostV3.0">
       {" "}
       {/* Update basename to match your repository name */}
       <Navbar />
