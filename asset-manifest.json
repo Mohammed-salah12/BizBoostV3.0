@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/BizBoostV3.0/static/css/main.e5db7b0c.css",
+    "main.js": "/BizBoostV3.0/static/js/main.b207aaed.js",
+    "static/js/453.ca47a58f.chunk.js": "/BizBoostV3.0/static/js/453.ca47a58f.chunk.js",
+    "static/media/contactus.mp4": "/BizBoostV3.0/static/media/contactus.f5c55fa516453be3236d.mp4",
+    "static/media/bussiness.mp4": "/BizBoostV3.0/static/media/bussiness.8145d78d3db21b78d525.mp4",
+    "static/media/funds.mp4": "/BizBoostV3.0/static/media/funds.6566328bdeba646e44d3.mp4",
+    "static/media/about.mp4": "/BizBoostV3.0/static/media/about.45b811f1b47e954589d1.mp4",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/BizBoostV3.0/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/businessContact.jpg": "/BizBoostV3.0/static/media/businessContact.b9fecbbc81a99f1bddd3.jpg",
+    "static/media/Funder.jpeg": "/BizBoostV3.0/static/media/Funder.5b8782ee6960a7fdd984.jpeg",
+    "static/media/signin.jpg": "/BizBoostV3.0/static/media/signin.8c28b68709785216ef82.jpg",
+    "static/media/bootstrap-icons.woff?": "/BizBoostV3.0/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
+    "static/media/fontawesome-webfont.eot": "/BizBoostV3.0/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/BizBoostV3.0/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/bootstrap-icons.woff2?": "/BizBoostV3.0/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/BizBoostV3.0/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/carousel-1.jpg": "/BizBoostV3.0/static/media/carousel-1.0c731fe6459d52f225d3.jpg",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/BizBoostV3.0/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/carousel-2.jpg": "/BizBoostV3.0/static/media/carousel-2.db3e259e426669353c8b.jpg",
+    "static/media/feature.jpg": "/BizBoostV3.0/static/media/feature.b8fa3a1d15793321bc06.jpg",
+    "static/media/team-3.jpg": "/BizBoostV3.0/static/media/team-3.e665709987982790ed54.jpg",
+    "static/media/blog-2.jpg": "/BizBoostV3.0/static/media/blog-2.ea6300b3228592aaca85.jpg",
+    "static/media/blog-3.jpg": "/BizBoostV3.0/static/media/blog-3.b8d953c4371c38939cfe.jpg",
+    "static/media/blog-1.jpg": "/BizBoostV3.0/static/media/blog-1.5150f0b19ffe23a26519.jpg",
+    "static/media/team-2.jpg": "/BizBoostV3.0/static/media/team-2.a56401fe6b75b6c7b44c.jpg",
+    "static/media/slick.svg": "/BizBoostV3.0/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/BizBoostV3.0/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/BizBoostV3.0/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/BizBoostV3.0/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/BizBoostV3.0/index.html",
+    "main.e5db7b0c.css.map": "/BizBoostV3.0/static/css/main.e5db7b0c.css.map",
+    "main.b207aaed.js.map": "/BizBoostV3.0/static/js/main.b207aaed.js.map",
+    "453.ca47a58f.chunk.js.map": "/BizBoostV3.0/static/js/453.ca47a58f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e5db7b0c.css",
+    "static/js/main.b207aaed.js"
+  ]
+}
