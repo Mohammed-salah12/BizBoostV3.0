@@ -1,0 +1,188 @@
+.signin-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.btn-primary {
+  background-color: #06a3da;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #0482c0;
+}
+
+.signinout-page {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100vh; /* Make the container take up full viewport height */
+}
+.navbar-brand h1 {
+  color: #06a3da !important;
+}
+
+/* Specific styling for the Sign In Out page */
+.signin-navbar .nav-link {
+  color: black !important;
+}
+
+.image-container {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%; /* Increase width of the image container */
+  max-width: 600px; /* Adjust max-width as needed */
+}
+
+.example-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.signinout-container {
+  max-width: 400px; /* Reduce the width of the form container */
+  margin: auto;
+  padding: 20px;
+  background: white;
+  transform: translate(300px, 0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.signinout-flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.form-container {
+  flex: 1;
+}
+
+.toggle-button {
+  display: flex;
+  gap: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.role-selection .role-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.role-selection .btn {
+  width: 100%;
+}
+.backBtnn {
+  margin-top: 20px;
+  height: 40px !important;
+}
+.signup-form {
+  padding: 20px;
+}
+
+.btn-primary {
+  background-color: #06a3da;
+  border-color: #06a3da;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  border-color: #bbb;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* General styles for small devices */
+@media (max-width: 767px) {
+  .signinout-page {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 900px;
+  }
+  .navbar-brand h1 {
+    margin-bottom: 100px;
+  }
+  .image-container {
+    position: relative;
+    width: 70%;
+    left: 0; /* Adjust width for small screens */
+    top: auto;
+
+    transform: none;
+    margin-bottom: 20px; /* Add space between image and form */
+  }
+
+  .signinout-container {
+    width: 100%;
+    max-width: none; /* Remove max-width constraint */
+    transform: none; /* Reset transform */
+    margin: 0 auto;
+  }
+
+  .signinout-flex-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-container {
+    width: 100%; /* Full width on small screens */
+  }
+  .backBtnn {
+    margin-top: 20px;
+    height: 100px !important;
+  }
+  .toggle-button {
+    margin-bottom: 10px; /* Reduce margin on small screens */
+  }
+
+  .form-group {
+    margin-bottom: 10px; /* Reduce margin between input fields */
+  }
+
+  input {
+    padding: 8px; /* Adjust padding for smaller inputs */
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%; /* Full width buttons on small screens */
+    padding: 12px; /* Adjust padding for larger buttons */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+}
