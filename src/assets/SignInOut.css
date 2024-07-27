@@ -132,12 +132,9 @@ h2 {
     justify-content: center;
     height: 900px;
   }
-  /* .navbar-brand h1 {
+  .navbar-brand h1 {
     margin-bottom: 100px;
-  } */
-  /* nav {
-    height: 1px !important ;
-  } */
+  }
   .image-container {
     position: relative;
     width: 70%;
