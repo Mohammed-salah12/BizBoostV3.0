@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"; // Importing icons
 import "../assets/profile.css";
 import profileImg from "../img/bruce-mars.jpg";
@@ -7,6 +7,40 @@ import projectImg from "../img/businessContact.jpg";
 export const Profile = () => {
   const [showMore, setShowMore] = useState(false);
   const [interestText, setInterestText] = useState("interest");
+  const [loading, setLoading] = useState(true);
+  const [animationClass, setAnimationClass] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 300);
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, []);
+
+  useEffect(() => {
+    setAnimationClass("animate__animated animate__zoomIn");
+
+    const elements = document.querySelectorAll(".animate-on-load");
+    elements.forEach((el) => {
+      el.classList.remove("animate__animated", "animate__zoomIn");
+      void el.offsetWidth; // Trigger reflow
+      el.classList.add("animate__animated", "animate__zoomIn");
+    });
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 45) {
+        navbar.classList.add("sticky-top", "shadow-sm");
+      } else {
+        navbar.classList.remove("sticky-top", "shadow-sm");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleReadMore = () => {
     setShowMore(!showMore);
@@ -20,6 +54,16 @@ export const Profile = () => {
 
   return (
     <div>
+      {/* Spinner Start */}
+      {loading && (
+        <div
+          id="spinner"
+          className="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+        >
+          <div className="spinner"></div>
+        </div>
+      )}
+      {/* Spinner End */}
       <div className="profileContainerDiv">
         <div className="profileContainer">
           <div className="profileContent">

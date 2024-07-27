@@ -11,7 +11,7 @@ const Navbar = () => {
   // Function to determine if the link is active
   const isActive = (path) => location.pathname === path;
 
-  // Check if the current path is '/userProfile', '/campaignDetails', or '/SignInOut'
+  // Check if the current path is '/userProfile', '/campaignDetails', '/SignInOut', or '/profile'
   const isUserProfile = isActive("/userProfile");
   const isCampaignDetails = isActive("/campaignDetails");
   const isSignIn = isActive("/SignInOut");
@@ -49,7 +49,7 @@ const Navbar = () => {
               <Link
                 to="/"
                 className={`nav-link ${isActive("/") ? "active" : ""} ${
-                  isCampaignDetails ? "black-link" : ""
+                  isCampaignDetails || isProfile ? "black-link" : ""
                 }`}
               >
                 Home
@@ -59,7 +59,7 @@ const Navbar = () => {
               <Link
                 to="/about-pg"
                 className={`nav-link ${isActive("/about-pg") ? "active" : ""} ${
-                  isCampaignDetails ? "black-link" : ""
+                  isCampaignDetails || isProfile ? "black-link" : ""
                 }`}
               >
                 About Us
@@ -70,14 +70,16 @@ const Navbar = () => {
                 to="/campaign-pg"
                 className={`nav-link ${
                   isActive("/campaign-pg") ? "active" : ""
-                } ${isCampaignDetails ? "black-link" : ""}`}
+                } ${isCampaignDetails || isProfile ? "black-link" : ""}`}
               >
                 Campaigns
               </Link>
             </li>
             <li className="nav-item dropdown">
               <a
-                className={`nav-link ${isCampaignDetails ? "black-link" : ""}`}
+                className={`nav-link ${
+                  isCampaignDetails || isProfile ? "black-link" : ""
+                }`}
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -99,7 +101,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item dropdown">
               <a
-                className={`nav-link ${isCampaignDetails ? "black-link" : ""}`}
+                className={`nav-link ${
+                  isCampaignDetails || isProfile ? "black-link" : ""
+                }`}
                 href="#"
                 id="navbarDropdown2"
                 role="button"
@@ -111,7 +115,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 className={`nav-link ${isActive("/contact") ? "active" : ""} ${
-                  isCampaignDetails ? "black-link" : ""
+                  isCampaignDetails || isProfile ? "black-link" : ""
                 }`}
               >
                 Contact
@@ -120,8 +124,8 @@ const Navbar = () => {
             <li className="nav-item">
               <Link
                 to="/profile"
-                className={`nav-link ${isProfile ? "black-link" : ""} ${
-                  isCampaignDetails ? "black-link" : ""
+                className={`nav-link ${isActive("/profile") ? "active" : ""} ${
+                  isCampaignDetails || isProfile ? "black-link" : ""
                 }`}
               >
                 Profile
@@ -132,7 +136,7 @@ const Navbar = () => {
                 to="/SignInOut"
                 className={`nav-link ${
                   isActive("/SignInOut") ? "active" : ""
-                } ${isCampaignDetails ? "black-link" : ""}`}
+                } ${isCampaignDetails || isProfile ? "black-link" : ""}`}
               >
                 Sign In
               </Link>

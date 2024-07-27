@@ -249,10 +249,6 @@ h6,
   height: 3rem;
 }
 /* Navbar styles for /userProfile */
-.user-profile-navbar .nav-link.active {
-  font-weight: bold;
-  color: black;
-}
 
 h1.active-logo {
   background: var(--primary);
