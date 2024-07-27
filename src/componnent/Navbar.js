@@ -11,10 +11,11 @@ const Navbar = () => {
   // Function to determine if the link is active
   const isActive = (path) => location.pathname === path;
 
-  // Check if the current path is '/userProfile' or '/campaignDetails'
+  // Check if the current path is '/userProfile', '/campaignDetails', or '/SignInOut'
   const isUserProfile = isActive("/userProfile");
   const isCampaignDetails = isActive("/campaignDetails");
   const isSignIn = isActive("/SignInOut");
+  const isProfile = isActive("/profile");
 
   return (
     <>
@@ -116,7 +117,16 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
-            <li className="nav-item"></li>
+            <li className="nav-item">
+              <Link
+                to="/profile"
+                className={`nav-link ${isProfile ? "black-link" : ""} ${
+                  isCampaignDetails ? "black-link" : ""
+                }`}
+              >
+                Profile
+              </Link>
+            </li>
             <li className="nav-item">
               <Link
                 to="/SignInOut"

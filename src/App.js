@@ -28,6 +28,7 @@ import AboutPg from "./componnent/AboutPg";
 import CampaignDetails from "./componnent/CampaignDetails";
 import Team from "./componnent/Team";
 import SignInOut from "./componnent/SignInOut";
+import { Profile } from "./componnent/Profile";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="/campaign-pg" element={<CampaignPg />} />
           <Route path="/about-pg" element={<AboutPg />} />
           <Route path="/SignInOut" element={<SignInOut />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" />} />{" "}
           {/* Redirect unknown routes */}
         </Routes>

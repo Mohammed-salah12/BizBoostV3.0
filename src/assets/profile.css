@@ -1,0 +1,317 @@
+div.profileContainerDiv {
+  margin-top: 100px;
+  width: 100%;
+}
+
+div.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 600px;
+  background-image: url(../img/about.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+}
+div.profileContent {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  min-height: 400px;
+  margin-top: 1000px;
+  width: 95%;
+  z-index: 1;
+  margin-bottom: 100px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.IconBox {
+  display: flex;
+  width: 30px;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 40px;
+  transform: translate(0, -400px);
+}
+img.imgProfile {
+  width: 150px;
+  border-radius: 50%;
+  transform: translate(350px, -100px);
+}
+div.contentHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* .skillTags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.skillTag {
+  background-color: #06a3da;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+} */
+
+.skillTags {
+  display: flex;
+  width: 700px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.skillTag {
+  background-color: #06a3da;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+div.NameAndFollowBtn {
+  display: flex;
+  gap: 250px;
+}
+div.interestedInOn {
+  display: flex;
+  min-width: 500px;
+  min-height: 100px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-right: 360px;
+}
+h2.numOfInterest {
+  font-size: 19px;
+}
+h2.numOfInterestIn {
+  font-size: 19px;
+}
+div.interested {
+  display: flex;
+  gap: 5px;
+}
+div.interestedIn {
+  display: flex;
+  gap: 5px;
+}
+
+p.pProfile {
+  font-size: 13px;
+  transform: translate(0, 2px);
+}
+button.interestBtn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #06a3da;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+div.aboutMe {
+  width: 500px;
+  margin-right: 115px;
+}
+.showmoreBtn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #06a3da;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+div.latestProjects {
+  transform: translate(100px, 0);
+  margin-top: 80px;
+  width: 90%;
+  z-index: 1;
+}
+img.imgProject {
+  width: 400px;
+  border-radius: 10px;
+}
+
+.projectsContainer {
+  display: flex;
+  gap: 50px;
+  width: 90%;
+  margin-top: 500px;
+}
+
+.projectContent {
+  width: 400px;
+}
+.readMoreBtn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #06a3da;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.titleProject {
+  margin-right: 160px;
+  margin-top: 50px;
+  font-size: 20px !important;
+  font-weight: bolder;
+}
+
+div.projectBox {
+  width: 400px;
+}
+@media (max-width: 1400px) {
+  .skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  .projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 120px;
+  }
+}
+
+@media (max-width: 1135px) {
+  .skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  .projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+  }
+}
+@media (max-width: 1112px) {
+  /* body {
+    background-color: black;
+  } */
+  .skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  .projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+}
+@media (max-width: 1050px) {
+  .skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  .projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 1017px) {
+  /* body {
+    background-color: black;
+  } */
+
+  .projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 999px) {
+  .projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+/* Styles for devices smaller than 576px */
+@media (max-width: 575.98px) {
+  div.profileContent {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    height: 750px;
+    margin-top: 1400px;
+    width: 95%;
+    /* margin-bottom: 100px; */
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  div.contentHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translate(0, -370px);
+    /* margin-bottom: 400px; */
+    height: 1px;
+  }
+  .skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 350px;
+  }
+  div.NameAndFollowBtn {
+    display: flex;
+    gap: 150px;
+  }
+
+  div.aboutMe {
+    width: 400px;
+    margin-left: 100px;
+  }
+
+  div.interestedInOn {
+    display: flex;
+    min-width: 500px;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 170px;
+    gap: 50px;
+  }
+  div.latestProjects {
+    transform: translate(60px, 0);
+    margin-top: 200px;
+    width: 400px;
+    z-index: 1;
+  }
+  div.profileContainerDiv {
+    transform: translate(0, -130px);
+    width: 100%;
+  }
+  img.imgProfile {
+    width: 150px;
+    border-radius: 50%;
+    transform: translate(440px, -100px);
+  }
+
+  .projectsContainer {
+    display: flex;
+    gap: 50px;
+    width: 90%;
+    margin-top: 550px;
+  }
+  .IconBox {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    margin-left: 300px;
+    transform: translate(120px, -700px);
+  }
+}

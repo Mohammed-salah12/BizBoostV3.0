@@ -176,7 +176,6 @@ h6,
     top: 0;
     left: 0;
     border-bottom: 1px solid rgba(256, 256, 256, 0.1);
-    z-index: 999;
   }
 
   .sticky-top.navbar-dark {
