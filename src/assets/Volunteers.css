@@ -1,0 +1,61 @@
+.businesses-container {
+  display: flex;
+  margin-top: 100px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+.BusinessHolder {
+  border-top: 1px solid #f0f0f0;
+  width: 75%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+img.BusinessImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.BusinessCard {
+  margin: 20px 0 0 20px;
+  width: 90%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px #f0f0f0;
+}
+.companyNameImg {
+  display: flex !important;
+  height: 50px !important;
+  gap: 20px;
+}
+
+.viewProfileBtn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #06a3da;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transform: translate(800px, -38px);
+}
+.companyName {
+  border-top: 30px;
+  font-size: 25px;
+}
+.founderName {
+  font-size: 15px;
+  font-weight: 100;
+  color: #a6a4a4;
+}
+
+.volunteers-navbar-item {
+  color: black !important;
+}

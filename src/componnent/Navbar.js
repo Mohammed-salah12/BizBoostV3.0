@@ -1,36 +1,38 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Modal from "./Modal";
+import { useAuth } from "../context/AuthContext"; // Import the useAuth hook
 import "../assets/hero.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const Navbar = () => {
   const location = useLocation();
+  const { isAuthenticated, username } = useAuth(); // Get authentication status and username
 
-  // Function to determine if the link is active
+  // Check if the current path exactly matches the given path
   const isActive = (path) => location.pathname === path;
 
-  // Check if the current path is '/userProfile', '/campaignDetails', '/SignInOut', or '/profile'
-  const isUserProfile = isActive("/userProfile");
-  const isCampaignDetails = isActive("/campaignDetails");
-  const isSignIn = isActive("/SignInOut");
-  const isProfile = isActive("/profile");
+  // Determine if the current path is a profile page
+  const isProfilePage = () => {
+    const profilePathRegex = /^\/profile\/.+$/;
+    return profilePathRegex.test(location.pathname);
+  };
+
+  const navbarClass = `navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ${
+    isActive("/userProfile") ? "user-profile-navbar" : ""
+  } ${isActive("/SignInOut") ? "signin-navbar" : ""}`;
 
   return (
     <>
-      <nav
-        className={`navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0 ${
-          isUserProfile ? "user-profile-navbar" : ""
-        } ${isSignIn ? "signin-navbar" : ""}`}
-      >
+      <nav className={navbarClass}>
         <Link
           to="/"
-          className={`navbar-brand p-0 ${
-            isCampaignDetails ? "campaign-details-logo" : ""
+          className={`navbar-brand p-0 ${isActive("/") ? "active" : ""} ${
+            isProfilePage() ? "black-link" : ""
           }`}
         >
-          <h1 className={` ${isSignIn ? "ddd" : ""}`}>
+          <h1>
             <i className={`fa fa-user-tie me-2`}></i>
             BizBoost
           </h1>
@@ -49,7 +51,7 @@ const Navbar = () => {
               <Link
                 to="/"
                 className={`nav-link ${isActive("/") ? "active" : ""} ${
-                  isCampaignDetails || isProfile ? "black-link" : ""
+                  isProfilePage() ? "black-link" : ""
                 }`}
               >
                 Home
@@ -59,7 +61,7 @@ const Navbar = () => {
               <Link
                 to="/about-pg"
                 className={`nav-link ${isActive("/about-pg") ? "active" : ""} ${
-                  isCampaignDetails || isProfile ? "black-link" : ""
+                  isProfilePage() ? "black-link" : ""
                 }`}
               >
                 About Us
@@ -70,73 +72,59 @@ const Navbar = () => {
                 to="/campaign-pg"
                 className={`nav-link ${
                   isActive("/campaign-pg") ? "active" : ""
-                } ${isCampaignDetails || isProfile ? "black-link" : ""}`}
+                } ${isProfilePage() ? "black-link" : ""}`}
               >
                 Campaigns
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <a
+            <li className="nav-item">
+              <Link
+                to="/volunteers"
                 className={`nav-link ${
-                  isCampaignDetails || isProfile ? "black-link" : ""
-                }`}
-                href="#"
-                id="navbarDropdown"
-                role="button"
+                  isActive("/volunteers") ? "active" : ""
+                } ${isProfilePage() ? "black-link" : ""}`}
               >
                 Volunteers
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link to="/blog" className="dropdown-item">
-                    Blog Grid
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/detail" className="dropdown-item">
-                    Blog Detail
-                  </Link>
-                </li>
-              </ul>
+              </Link>
             </li>
-            <li className="nav-item dropdown">
-              <a
+            <li className="nav-item">
+              <Link
+                to="/businesses"
                 className={`nav-link ${
-                  isCampaignDetails || isProfile ? "black-link" : ""
-                }`}
-                href="#"
-                id="navbarDropdown2"
-                role="button"
+                  isActive("/businesses") ? "active" : ""
+                } ${isProfilePage() ? "black-link" : ""}`}
               >
                 Businesses
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link
                 to="/contact"
                 className={`nav-link ${isActive("/contact") ? "active" : ""} ${
-                  isCampaignDetails || isProfile ? "black-link" : ""
+                  isProfilePage() ? "black-link" : ""
                 }`}
               >
                 Contact
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/profile"
-                className={`nav-link ${isActive("/profile") ? "active" : ""} ${
-                  isCampaignDetails || isProfile ? "black-link" : ""
-                }`}
-              >
-                Profile
-              </Link>
-            </li>
+            {isAuthenticated && username && (
+              <li className="nav-item">
+                <Link
+                  to={`/profile/${username}`}
+                  className={`nav-link ${
+                    isActive(`/profile/${username}`) ? "active" : ""
+                  } ${isProfilePage() ? "black-link" : ""}`}
+                >
+                  Profile
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
               <Link
                 to="/SignInOut"
                 className={`nav-link ${
                   isActive("/SignInOut") ? "active" : ""
-                } ${isCampaignDetails || isProfile ? "black-link" : ""}`}
+                } ${isProfilePage() ? "black-link" : ""}`}
               >
                 Sign In
               </Link>
@@ -153,7 +141,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Ensure Modal is at a higher level to be correctly displayed */}
       <Modal id="searchModal" title="Search">
         <div className="modal-body d-flex align-items-center justify-content-center">
           <div className="input-group" style={{ maxWidth: "600px" }}>

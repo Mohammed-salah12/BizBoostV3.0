@@ -315,3 +315,6 @@ div.projectBox {
     transform: translate(120px, -700px);
   }
 }
+.profile-navbar .nav-link {
+  color: #000 !important; /* Override all nav link colors to black */
+}

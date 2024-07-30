@@ -19,8 +19,6 @@ import About from "./componnent/About";
 import Features from "./componnent/Features";
 import Campaign from "./componnent/Campaign";
 import Testimonial from "./componnent/Testimonials";
-import VendorSlider from "./componnent/VendorSlider";
-import Footer from "./componnent/Footer";
 import Contact from "./componnent/Contact";
 import Navbar from "./componnent/Navbar";
 import CampaignPg from "./componnent/CampaignPg";
@@ -29,6 +27,10 @@ import CampaignDetails from "./componnent/CampaignDetails";
 import Team from "./componnent/Team";
 import SignInOut from "./componnent/SignInOut";
 import { Profile } from "./componnent/Profile";
+import Businesses from "./componnent/Businesses";
+import Volunteers from "./componnent/Volunteers";
+import VendorSlider from "./componnent/VendorSlider";
+import Footer from "./componnent/Footer";
 
 function App() {
   return (
@@ -57,7 +59,11 @@ function App() {
           <Route path="/campaign-pg" element={<CampaignPg />} />
           <Route path="/about-pg" element={<AboutPg />} />
           <Route path="/SignInOut" element={<SignInOut />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
+          {/* Updated to use element */}
+          <Route path="/businesses" element={<Businesses />} />{" "}
+          <Route path="/volunteers" element={<Volunteers />} />{" "}
+          {/* Ensure this path matches */}
           <Route path="*" element={<Navigate to="/" />} />{" "}
           {/* Redirect unknown routes */}
         </Routes>
