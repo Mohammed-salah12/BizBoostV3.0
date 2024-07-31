@@ -73,5 +73,8 @@ function App() {
     </Router>
   );
 }
-
+const handleViewProfile = (username) => {
+  console.log("Navigating to profile:", username);
+  navigate(`/profile/${username}`);
+};
 export default App;

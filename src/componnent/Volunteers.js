@@ -1,29 +1,20 @@
-// src/components/Businesses.js
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import "../assets/Volunteers.css";
-import CompanyImg from "../img/Funder.jpeg";
+import profilesData from "../constants/profilesData.js";
 
-const Businesses = () => {
+const Volunteers = () => {
   const [loading, setLoading] = useState(true);
-  const [animationClass, setAnimationClass] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 300);
-    return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []);
-
-  useEffect(() => {
-    setAnimationClass("animate__animated animate__zoomIn");
-
-    const elements = document.querySelectorAll(".animate-on-load");
-    elements.forEach((el) => {
-      el.classList.remove("animate__animated", "animate__zoomIn");
-      void el.offsetWidth; // Trigger reflow
-      el.classList.add("animate__animated", "animate__zoomIn");
-    });
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -41,84 +32,41 @@ const Businesses = () => {
   }, []);
 
   const categories = [
-    "Tech Company",
-    "Marketing Company",
-    "Finance Company",
-    "Healthcare Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-    "Retail Company",
-
+    "Web Developer",
+    "DevOps Engineer",
+    "Data Scientist",
+    "UI/UX Designer",
+    "Backend Developer",
     // Add more categories as needed
   ];
 
-  const businessData = [
-    {
-      name: "NewLine For Information Technology",
-      description: `NewLine For Information Technology is a renowned technology company located in the heart of New York City. Our mission is to provide innovative solutions and products to help businesses achieve their goals. We strive to create a strong, supportive, and inclusive work environment where employees feel valued and encouraged to contribute to the success of our clients.`,
-      img: CompanyImg,
-    },
-    {
-      name: "Tech Innovators",
-      description: `Tech Innovators is a leading company in AI and machine learning. Our goal is to revolutionize the tech industry with cutting-edge solutions. Our team of experts is dedicated to pushing the boundaries of technology to provide top-notch services.`,
-      img: CompanyImg,
-    },
-    {
-      name: "HealthCare Solutions",
-      description: `HealthCare Solutions is dedicated to providing advanced healthcare services and products. We aim to improve the quality of life for our patients through innovative medical solutions and excellent patient care.`,
-      img: CompanyImg,
-    },
-    {
-      name: "HealthCare Solutions",
-      description: `HealthCare Solutions is dedicated to providing advanced healthcare services and products. We aim to improve the quality of life for our patients through innovative medical solutions and excellent patient care.`,
-      img: CompanyImg,
-    },
-    {
-      name: "HealthCare Solutions",
-      description: `HealthCare Solutions is dedicated to providing advanced healthcare services and products. We aim to improve the quality of life for our patients through innovative medical solutions and excellent patient care.`,
-      img: CompanyImg,
-    },
-    {
-      name: "HealthCare Solutions",
-      description: `HealthCare Solutions is dedicated to providing advanced healthcare services and products. We aim to improve the quality of life for our patients through innovative medical solutions and excellent patient care.`,
-      img: CompanyImg,
-    },
-    {
-      name: "HealthCare Solutions",
-      description: `HealthCare Solutions is dedicated to providing advanced healthcare services and products. We aim to improve the quality of life for our patients through innovative medical solutions and excellent patient care.`,
-      img: CompanyImg,
-    },
-    {
-      name: "NewLine For Information Technology",
-      description: `NewLine For Information Technology is a renowned technology company located in the heart of New York City. Our mission is to provide innovative solutions and products to help businesses achieve their goals. We strive to create a strong, supportive, and inclusive work environment where employees feel valued and encouraged to contribute to the success of our clients.`,
-      img: CompanyImg,
-    },
+  const handleViewProfile = (username) => {
+    navigate(`/profile/${username}`);
+  };
 
-    {
-      name: "NewLine For Information Technology",
-      description: `NewLine For Information Technology is a renowned technology company located in the heart of New York City. Our mission is to provide innovative solutions and products to help businesses achieve their goals. We strive to create a strong, supportive, and inclusive work environment where employees feel valued and encouraged to contribute to the success of our clients.`,
-      img: CompanyImg,
-    },
-    {
-      name: "NewLine For Information Technology",
-      description: `NewLine For Information Technology is a renowned technology company located in the heart of New York City. Our mission is to provide innovative solutions and products to help businesses achieve their goals. We strive to create a strong, supportive, and inclusive work environment where employees feel valued and encouraged to contribute to the success of our clients.`,
-      img: CompanyImg,
-    },
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prevCategories) =>
+      prevCategories.includes(category)
+        ? prevCategories.filter((cat) => cat !== category)
+        : [...prevCategories, category]
+    );
+  };
 
-    {
-      name: "NewLine For Information Technology",
-      description: `NewLine For Information Technology is a renowned technology company located in the heart of New York City. Our mission is to provide innovative solutions and products to help businesses achieve their goals. We strive to create a strong, supportive, and inclusive work environment where employees feel valued and encouraged to contribute to the success of our clients.`,
-      img: CompanyImg,
-    },
-    // Add more business data as needed
-  ];
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredVolunteerProfiles = profilesData.filter(
+    (profile) =>
+      profile.role === "Volunteer" &&
+      (selectedCategories.length === 0 ||
+        selectedCategories.includes(profile.category)) &&
+      (profile.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        profile.about.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        profile.skills.some((skill) =>
+          skill.toLowerCase().includes(searchTerm.toLowerCase())
+        ))
+  );
 
   return (
     <div className="businesses-container">
@@ -130,28 +78,66 @@ const Businesses = () => {
           <div className="spinner"></div>
         </div>
       )}
-      <Sidebar categories={categories} />
+      <Sidebar
+        categories={categories}
+        onCategoryChange={handleCategoryChange}
+        selectedCategories={selectedCategories}
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
+      />
       <div className="BusinessHolder">
-        {businessData.map((business, index) => (
-          <div className="BusinessCard" key={index}>
-            <div className="upperProfileHolder">
-              <div className="companyNameImg">
-                <img src={business.img} alt="" className="BusinessImg" />
-                <div className="companyDetails">
-                  <h2 className="companyName">{business.name}</h2>
+        {filteredVolunteerProfiles.length > 0 ? (
+          filteredVolunteerProfiles.map((profile, index) => (
+            <div className="BusinessCard" key={index}>
+              <div className="upperProfileHolder">
+                <div className="companyNameImg">
+                  <img
+                    src={profile.profileImg}
+                    alt={profile.name}
+                    className="BusinessImg"
+                  />
+                  <div className="companyDetails">
+                    <h2 className="companyName">{profile.name}</h2>
+                    <div className="BusinessSocialLinks">
+                      <a
+                        href={profile.socialLinks?.github || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        GitHub
+                      </a>
+                      <a
+                        href={profile.socialLinks?.linkedin || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        LinkedIn
+                      </a>
+                      <a href={`mailto:${profile.socialLinks?.email || ""}`}>
+                        Email
+                      </a>
+                    </div>
+                  </div>
                 </div>
+                <button
+                  className="viewProfileBtn"
+                  onClick={() => handleViewProfile(profile.username)}
+                >
+                  View Profile
+                </button>
               </div>
-              <button className="viewProfileBtn">View Profile</button>
-            </div>
 
-            <div className="BusinessDesc">
-              <p>{business.description}</p>
+              <div className="BusinessDesc">
+                <p>{profile.about}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <div>No volunteers found</div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Businesses;
+export default Volunteers;

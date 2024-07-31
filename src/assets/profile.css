@@ -150,6 +150,7 @@ img.imgProject {
   width: 400px;
 }
 .readMoreBtn {
+  margin-top: 30px;
   padding: 10px 20px;
   border-radius: 10px;
   background-color: #06a3da;
@@ -158,6 +159,7 @@ img.imgProject {
   cursor: pointer;
 }
 .titleProject {
+  width: 400px;
   margin-right: 160px;
   margin-top: 50px;
   font-size: 20px !important;

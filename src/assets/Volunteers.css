@@ -59,3 +59,10 @@ img.BusinessImg {
 .volunteers-navbar-item {
   color: black !important;
 }
+.BusinessSocialLinks {
+  display: flex;
+  gap: 20px;
+}
+.BusinessSocialLinks a {
+  text-decoration: none;
+}

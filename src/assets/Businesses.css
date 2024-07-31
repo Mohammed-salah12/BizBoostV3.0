@@ -58,8 +58,15 @@ img.BusinessImg {
   font-weight: 100;
   color: #a6a4a4;
 }
-
+.category {
+  font-size: 15px;
+  font-weight: bold;
+  color: #a6a4a4;
+}
 .businesses-navbar-item {
   /* Style for nav items on the Businesses page */
   color: black !important;
+}
+.BusinessDesc {
+  transform: translate(0, 10px);
 }
