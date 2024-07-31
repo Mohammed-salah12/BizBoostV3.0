@@ -1,309 +1,250 @@
-import bruceMarsImg from "../img/bruce-mars.jpg";
-import businessContactImg from "../img/businessContact.jpg";
+import defaultProfileImg from "../img/Funder.jpeg"; // Use a default image for all profiles
 
 const profilesData = [
-  // Business Profiles
   {
     username: "michael-roven",
     name: "Michael Roven",
-    profileImg: bruceMarsImg,
+    profileImg: defaultProfileImg,
     role: "Business",
     category: "Tech Company",
+    skills: ["Technology", "Investment", "Project Management"],
+    about:
+      "Michael Roven is a leading figure in the tech industry with a focus on innovative solutions and investment opportunities.",
     projects: [
       {
         title: "Rover raised $65 million",
         description:
           "Finding temporary housing for your dog should be as easy as renting an Airbnb.",
-        img: businessContactImg,
+        img: defaultProfileImg,
       },
       {
         title: "Tech Innovators Funded",
         description: "Securing investment for groundbreaking tech startups.",
-        img: businessContactImg,
+        img: defaultProfileImg,
       },
       {
         title: "Green Initiatives",
         description:
           "Supporting eco-friendly businesses and sustainable practices.",
-        img: businessContactImg,
+        img: defaultProfileImg,
       },
     ],
-    socialLinks: {
-      github: "https://github.com/mohammed-salah12",
-      linkedin: "https://linkedin.com/in/username",
-      email: "mailto:email@example.com",
+    campaign: {
+      title: "Rover raised $65 million",
+      description:
+        "Find temporary housing for your dog should be as easy as renting an Airbnb.",
+      goal: 50000,
+      supporters: 250,
+      img: defaultProfileImg,
+      comments: [
+        {
+          name: "John Doe",
+          photo: defaultProfileImg,
+          message: "This is an amazing campaign! Great job!",
+          date: "2024-07-31",
+        },
+        {
+          name: "Jane Smith",
+          photo: defaultProfileImg,
+          message: "Impressive work! Keep it up!",
+          date: "2024-07-30",
+        },
+      ],
+      about:
+        "This is a detailed description of the company behind the campaign.",
     },
-    about:
-      "Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality). Choose the path that leaves you more equanimous.",
-    skills: [
-      "React",
-      "JavaScript",
-      "CSS",
-      "HTML",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Docker",
-      "Git",
-      "Bootstrap",
-      "Tailwind",
-      "Critical Thinking",
-      "Problem Solving",
-      "Communication",
-      "Team Collaboration",
-      "Agile Methodologies",
-      "API Development",
-      "Project Management",
-      "UI/UX Design",
-    ],
   },
   {
-    username: "emily-jones",
-    name: "Emily Jones",
-    profileImg: bruceMarsImg,
+    username: "susan-kelly",
+    name: "Susan Kelly",
+    profileImg: defaultProfileImg,
     role: "Business",
-    category: "Healthcare Company",
+    category: "Social Impact",
+    skills: ["Community Development", "Health Initiatives", "Fundraising"],
+    about:
+      "Susan Kelly focuses on social impact initiatives aimed at improving community health and education.",
     projects: [
       {
-        title: "Tech Startups Boosted",
+        title: "Community Health Initiative",
         description:
-          "Elevating tech startups through strategic partnerships and investment.",
-        img: businessContactImg,
+          "Investing in projects that improve community health and well-being.",
+        img: defaultProfileImg,
       },
       {
-        title: "HealthTech Ventures",
-        description: "Promoting innovations in healthcare technology.",
-        img: businessContactImg,
-      },
-      {
-        title: "Educational Outreach",
+        title: "Education for All",
         description:
-          "Supporting educational initiatives and e-learning platforms.",
-        img: businessContactImg,
+          "Supporting educational programs and resources for underprivileged communities.",
+        img: defaultProfileImg,
       },
     ],
-    socialLinks: {
-      github: "https://github.com/emily-jones",
-      linkedin: "https://linkedin.com/in/emily-jones",
-      email: "mailto:emily.jones@example.com",
+    campaign: {
+      title: "Community Health Initiative",
+      description:
+        "Investing in projects that improve community health and well-being.",
+      goal: 80000,
+      supporters: 500,
+      img: defaultProfileImg,
+      comments: [
+        {
+          name: "Alice Johnson",
+          photo: defaultProfileImg,
+          message: "This initiative is very important! Proud to support!",
+          date: "2024-07-29",
+        },
+        {
+          name: "Robert Brown",
+          photo: defaultProfileImg,
+          message: "Great cause! Looking forward to seeing the impact.",
+          date: "2024-07-28",
+        },
+      ],
+      about:
+        "Our goal is to invest in projects that have a positive impact on community health.",
     },
-    about:
-      "Passionate about leveraging technology to solve real-world problems and drive innovation across various sectors.",
-    skills: [
-      "Innovation Management",
-      "Technology Strategy",
-      "Business Development",
-      "E-learning Solutions",
-      "Healthcare Innovations",
-      "Startup Mentoring",
-      "Financial Planning",
-      "Market Analysis",
-      "Strategic Partnerships",
-      "Investment Strategies",
-      "Leadership",
-      "Project Coordination",
-      "Cross-functional Collaboration",
-      "Product Development",
-      "Public Speaking",
-      "Networking",
-      "Customer Insights",
-      "Growth Hacking",
-      "Business Analytics",
-    ],
   },
   {
-    username: "john-doe",
-    name: "John Doe",
-    profileImg: bruceMarsImg,
+    username: "john-smith",
+    name: "John Smith",
+    profileImg: defaultProfileImg,
+    role: "Volunteer",
+    category: "Education",
+    skills: ["Education", "Tech Training", "Community Engagement"],
+    about:
+      "John Smith is dedicated to providing tech education and community support to underserved youth.",
+    projects: [
+      {
+        title: "Tech Education for Youth",
+        description:
+          "Providing tech education and resources to underprivileged youth.",
+        img: defaultProfileImg,
+      },
+      {
+        title: "Clean Water Access",
+        description: "Ensuring access to clean water in underserved regions.",
+        img: defaultProfileImg,
+      },
+    ],
+    campaign: {
+      title: "Tech Education for Youth",
+      description:
+        "Providing tech education and resources to underprivileged youth.",
+      goal: 60000,
+      supporters: 300,
+      img: defaultProfileImg,
+      comments: [
+        {
+          name: "Emily Davis",
+          photo: defaultProfileImg,
+          message:
+            "This project is crucial for future generations. Happy to help!",
+          date: "2024-07-27",
+        },
+        {
+          name: "Michael Johnson",
+          photo: defaultProfileImg,
+          message: "Education is the key to a better future. Great initiative!",
+          date: "2024-07-26",
+        },
+      ],
+      about:
+        "We aim to bridge the tech education gap and empower youth through learning.",
+    },
+  },
+  {
+    username: "lisa-williams",
+    name: "Lisa Williams",
+    profileImg: defaultProfileImg,
+    role: "Volunteer",
+    category: "Environmental",
+    skills: ["Environmental Advocacy", "Sustainability", "Urban Planning"],
+    about:
+      "Lisa Williams works on promoting environmental sustainability and improving urban green spaces.",
+    projects: [
+      {
+        title: "Green Earth Projects",
+        description:
+          "Promoting sustainable practices and environmental awareness.",
+        img: defaultProfileImg,
+      },
+      {
+        title: "Urban Green Spaces",
+        description:
+          "Developing green spaces in urban areas to improve quality of life.",
+        img: defaultProfileImg,
+      },
+    ],
+    campaign: {
+      title: "Urban Green Spaces",
+      description:
+        "Developing green spaces in urban areas to improve quality of life.",
+      goal: 75000,
+      supporters: 400,
+      img: defaultProfileImg,
+      comments: [
+        {
+          name: "Sara Parker",
+          photo: defaultProfileImg,
+          message:
+            "Love the focus on urban green spaces! Excited to contribute.",
+          date: "2024-07-25",
+        },
+        {
+          name: "Paul Wilson",
+          photo: defaultProfileImg,
+          message: "This project will make our cities more livable. Well done!",
+          date: "2024-07-24",
+        },
+      ],
+      about:
+        "Our mission is to enhance urban environments by creating green spaces for communities.",
+    },
+  },
+  {
+    username: "david-jones",
+    name: "David Jones",
+    profileImg: defaultProfileImg,
     role: "Business",
-    category: "Nonprofit Organization",
+    category: "Healthcare",
+    skills: ["Healthcare Management", "Mental Health", "Community Outreach"],
+    about:
+      "David Jones is committed to improving healthcare access and mental health services.",
     projects: [
       {
-        title: "Health Awareness Campaign",
+        title: "Affordable Health Clinics",
         description:
-          "Running campaigns to raise awareness about health and wellness.",
-        img: businessContactImg,
+          "Establishing clinics that offer affordable healthcare services.",
+        img: defaultProfileImg,
       },
       {
-        title: "Youth Mentorship Program",
+        title: "Mental Health Awareness",
         description:
-          "Providing mentorship and guidance to young people in the community.",
-        img: businessContactImg,
-      },
-      {
-        title: "Environmental Conservation",
-        description:
-          "Engaging in projects aimed at preserving natural habitats and ecosystems.",
-        img: businessContactImg,
+          "Promoting mental health awareness and providing support services.",
+        img: defaultProfileImg,
       },
     ],
-    socialLinks: {
-      github: "https://github.com/john-doe",
-      linkedin: "https://linkedin.com/in/john-doe",
-      email: "mailto:john.doe@example.com",
+    campaign: {
+      title: "Affordable Health Clinics",
+      description:
+        "Establishing clinics that offer affordable healthcare services.",
+      goal: 90000,
+      supporters: 350,
+      img: defaultProfileImg,
+      comments: [
+        {
+          name: "James Lee",
+          photo: defaultProfileImg,
+          message: "Health access should be universal. Proud to support!",
+          date: "2024-07-23",
+        },
+        {
+          name: "Nancy Wilson",
+          photo: defaultProfileImg,
+          message: "This campaign is vital for improving healthcare access.",
+          date: "2024-07-22",
+        },
+      ],
+      about: "We focus on making healthcare accessible and affordable for all.",
     },
-    about:
-      "Passionate about making a difference in the world through nonprofit work and committed to driving positive change in various sectors.",
-    skills: [
-      "Nonprofit Management",
-      "Community Engagement",
-      "Campaign Management",
-      "Youth Mentoring",
-      "Environmental Advocacy",
-      "Public Relations",
-      "Event Organization",
-      "Volunteer Coordination",
-      "Strategic Planning",
-      "Fundraising",
-      "Public Speaking",
-      "Team Leadership",
-      "Grant Writing",
-      "Collaboration",
-      "Project Management",
-      "Social Media Strategy",
-      "Networking",
-      "Program Development",
-      "Advocacy",
-    ],
-  },
-  // Volunteer Profiles
-  {
-    username: "john-volunteer",
-    name: "John Volunteer",
-    profileImg: bruceMarsImg,
-    role: "Volunteer",
-    category: "Web Developer",
-    projects: [
-      {
-        title: "Community Website",
-        description:
-          "Developed a website for local community events and resources.",
-        img: businessContactImg,
-      },
-      {
-        title: "Nonprofit Portal",
-        description:
-          "Created a portal for managing nonprofit activities and volunteer sign-ups.",
-        img: businessContactImg,
-      },
-      {
-        title: "Educational Platform",
-        description:
-          "Built an online learning platform for educational institutions.",
-        img: businessContactImg,
-      },
-    ],
-    socialLinks: {
-      github: "https://github.com/john-volunteer",
-      linkedin: "https://linkedin.com/in/john-volunteer",
-      email: "mailto:john.volunteer@example.com",
-    },
-    about:
-      "Dedicated web developer passionate about building web applications that improve user experience and solve real-world problems.",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Git",
-      "Bootstrap",
-      "Problem Solving",
-    ],
-  },
-  {
-    username: "jane-devops",
-    name: "Jane DevOps",
-    profileImg: bruceMarsImg,
-    role: "Volunteer",
-    category: "DevOps Engineer",
-    projects: [
-      {
-        title: "CI/CD Pipeline Automation",
-        description:
-          "Automated CI/CD pipelines for improved deployment efficiency.",
-        img: businessContactImg,
-      },
-      {
-        title: "Infrastructure as Code",
-        description:
-          "Implemented infrastructure as code using Terraform for scalability.",
-        img: businessContactImg,
-      },
-      {
-        title: "Monitoring Dashboard",
-        description:
-          "Developed a monitoring dashboard to track system performance and alerts.",
-        img: businessContactImg,
-      },
-    ],
-    socialLinks: {
-      github: "https://github.com/jane-devops",
-      linkedin: "https://linkedin.com/in/jane-devops",
-      email: "mailto:jane.devops@example.com",
-    },
-    about:
-      "Experienced DevOps engineer with a strong background in automating infrastructure and improving CI/CD pipelines.",
-    skills: [
-      "CI/CD",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "Terraform",
-      "Ansible",
-      "Linux",
-      "Python",
-      "Shell Scripting",
-      "Monitoring",
-    ],
-  },
-  {
-    username: "alice-designer",
-    name: "Alice Designer",
-    profileImg: bruceMarsImg,
-    role: "Volunteer",
-    category: "UI/UX Designer",
-    projects: [
-      {
-        title: "User Research Study",
-        description:
-          "Conducted user research to improve the user experience for a major app.",
-        img: businessContactImg,
-      },
-      {
-        title: "Redesign for E-commerce Site",
-        description:
-          "Redesigned the UI/UX for an e-commerce platform to boost user engagement.",
-        img: businessContactImg,
-      },
-      {
-        title: "Prototype for Mobile App",
-        description:
-          "Developed interactive prototypes for a new mobile application.",
-        img: businessContactImg,
-      },
-    ],
-    socialLinks: {
-      github: "https://github.com/alice-designer",
-      linkedin: "https://linkedin.com/in/alice-designer",
-      email: "mailto:alice.designer@example.com",
-    },
-    about:
-      "Creative UI/UX designer with a passion for creating visually appealing and user-friendly designs.",
-    skills: [
-      "Adobe XD",
-      "Figma",
-      "Sketch",
-      "Wireframing",
-      "Prototyping",
-      "User Research",
-      "UI Design",
-      "UX Design",
-      "Responsive Design",
-      "User Testing",
-    ],
   },
 ];
 

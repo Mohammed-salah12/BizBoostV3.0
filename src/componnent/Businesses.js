@@ -4,6 +4,14 @@ import Sidebar from "./Sidebar";
 import "../assets/Businesses.css";
 import profilesData from "../constants/profilesData";
 
+// Helper function to truncate text to a specified number of words
+const truncateText = (text, wordCount) => {
+  if (!text) return "";
+  const words = text.split(" ");
+  if (words.length <= wordCount) return text;
+  return words.slice(0, wordCount).join(" ") + "...";
+};
+
 const Businesses = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -65,6 +73,15 @@ const Businesses = () => {
         profile.about.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  const filteredVolunteerProfiles = profilesData.filter(
+    (profile) =>
+      profile.role === "Volunteer" &&
+      (selectedCategories.length === 0 ||
+        selectedCategories.includes(profile.category)) &&
+      (profile.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        profile.about.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <div className="businesses-container">
       {loading && (
@@ -111,7 +128,7 @@ const Businesses = () => {
               </div>
 
               <div className="BusinessDesc">
-                <p>{business.about}</p>
+                <p>{truncateText(business.about, 10)}</p>
               </div>
             </div>
           ))

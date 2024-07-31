@@ -1,168 +1,150 @@
 import React from "react";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import "font-awesome/css/font-awesome.min.css";
-import "animate.css";
 import { useNavigate } from "react-router-dom";
-
-import {
-  FaUser,
-  FaCalendarAlt,
-  FaBullhorn,
-  FaHandsHelping,
-} from "react-icons/fa";
-import CampaignImg1 from "../img/blog-1.jpg";
-import CampaignImg2 from "../img/blog-2.jpg";
-import CampaignImg3 from "../img/blog-3.jpg";
+import { FaBullhorn } from "react-icons/fa";
+import profilesData from "../constants/profilesData"; // Adjust the import path as needed
 
 const Campaign = () => {
   const navigate = useNavigate();
 
-  const handleCampaignClick = () => {
-    navigate("/campaignDetails");
+  const handleProfileClick = (username) => {
+    navigate(`/profile/${username}`);
   };
+
+  const handleCampaignClick = (username) => {
+    navigate(`/campaignDetails/${username}`);
+  };
+
+  // Helper function to chunk the profiles into groups of 4
+  const chunkArray = (array, size) => {
+    const result = [];
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+    return result;
+  };
+
+  const profileChunks = chunkArray(profilesData, 4);
+
   return (
-    <div
-      className="container-fluid py-5 animate__animated animate__fadeInUp"
-      style={{ animationDelay: "0.1s" }}
-    >
+    <div className="container-fluid py-5">
       <div className="container py-5">
         <div
           className="section-title text-center position-relative pb-3 mb-5 mx-auto"
           style={{ maxWidth: "600px" }}
         >
           <h5 className="fw-bold text-primary text-uppercase">
-            Latest StartUps
+            Latest Startups
           </h5>
           <h1 className="mb-0">Check Startups Needs, Give Them A Boost</h1>
         </div>
-        <div className="row g-5">
-          <div
-            className="col-lg-4 animate__animated animate__slideInUp"
-            style={{ animationDelay: "0.3s" }}
-          >
-            <div className="blog-item bg-light rounded overflow-hidden">
-              <div className="blog-img position-relative overflow-hidden">
-                <img className="img-fluid" src={CampaignImg1} alt="Blog 1" />
-                <a
-                  className="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
-                  href="#"
-                >
-                  See Profile
-                </a>
-              </div>
-              <div className="p-4">
-                <div className="d-flex mb-3">
-                  <small className="me-3">
-                    <FaUser className="text-primary me-2" /> Company Name
-                  </small>
-                  <small>
-                    <FaCalendarAlt className="text-primary me-2" /> 01 Jan, 2045
-                  </small>
-                </div>
-                <h4 className="mb-3">StartUp Category</h4>
-                <p>StartUp Description</p>
-                <a className="text-uppercase" href="#">
-                  Read More <i className="bi bi-arrow-right"></i>
-                </a>
-                <div className="mt-3">
-                  <button
-                    className="btn btn-primary me-2 hh"
-                    onClick={handleCampaignClick}
-                  >
-                    <FaBullhorn /> Campaign
-                  </button>
-                  <button className="btn btn-success">
-                    <FaHandsHelping />
-                    Be Volunteers
-                  </button>
-                </div>
-              </div>
-            </div>
+
+        <div
+          id="carouselExampleIndicators"
+          className="carousel slide"
+          style={{ position: "relative", margin: "0 auto" }}
+        >
+          <div className="carousel-indicators">
+            {profileChunks.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to={index}
+                className={index === 0 ? "active" : ""}
+                aria-current={index === 0 ? "true" : "false"}
+                aria-label={`Slide ${index + 1}`}
+                style={{ backgroundColor: "#e0f7fa" }} // Light blue color
+              ></button>
+            ))}
           </div>
-          <div
-            className="col-lg-4 animate__animated animate__slideInUp"
-            style={{ animationDelay: "0.6s" }}
-          >
-            <div className="blog-item bg-light rounded overflow-hidden">
-              <div className="blog-img position-relative overflow-hidden">
-                <img className="img-fluid" src={CampaignImg2} alt="Blog 2" />
-                <a
-                  className="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
-                  href="#"
-                >
-                  See Profile
-                </a>
-              </div>
-              <div className="p-4">
-                <div className="d-flex mb-3">
-                  <small className="me-3">
-                    <FaUser className="text-primary me-2" /> Company Name
-                  </small>
-                  <small>
-                    <FaCalendarAlt className="text-primary me-2" /> 01 Jan, 2045
-                  </small>
+          <div className="carousel-inner">
+            {profileChunks.map((chunk, chunkIndex) => (
+              <div
+                key={chunkIndex}
+                className={`carousel-item ${chunkIndex === 0 ? "active" : ""}`}
+              >
+                <div className="row g-4">
+                  {chunk.map((profile, profileIndex) => (
+                    <div key={profileIndex} className="col-md-3">
+                      <div className="card position-relative">
+                        <img
+                          src={profile.projects[0].img}
+                          className="card-img-top"
+                          alt={profile.projects[0].title}
+                          onError={(e) => {
+                            e.target.onerror = null; // Prevent infinite loop
+                            e.target.src = "https://via.placeholder.com/150"; // Fallback image
+                          }}
+                        />
+                        <button
+                          className="btn btn-light position-absolute top-50 start-0 translate-middle-y  showProfileBtn"
+                          style={{
+                            left: "10px",
+                            backgroundColor: "#e0f7fa", // Light blue color
+                            borderColor: "#b2ebf2", // Slightly darker light blue
+                          }}
+                          onClick={() => handleProfileClick(profile.username)}
+                        >
+                          Show Profile
+                        </button>
+                        <div className="card-body text-center">
+                          <h5 className="card-title">{profile.name}</h5>
+                          <p className="card-text">
+                            {profile.projects[0].title}
+                          </p>
+                          <button
+                            className="btn btn-primary m-1"
+                            onClick={() =>
+                              handleCampaignClick(profile.username)
+                            }
+                          >
+                            <FaBullhorn /> Campaign
+                          </button>
+                          <button className="btn btn-secondary m-1">
+                            Be Volunteer
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <h4 className="mb-3">StartUp Category</h4>
-                <p>StartUp Description</p>
-                <a className="text-uppercase" href="#">
-                  Read More <i className="bi bi-arrow-right"></i>
-                </a>
-                <div className="mt-3">
-                  <button
-                    className="btn btn-primary me-2"
-                    onClick={handleCampaignClick}
-                  >
-                    <FaBullhorn /> Campaign
-                  </button>
-                  <button className="btn btn-success">
-                    <FaHandsHelping /> Be Volunteers
-                  </button>
-                </div>
               </div>
-            </div>
+            ))}
           </div>
-          <div
-            className="col-lg-4 animate__animated animate__slideInUp"
-            style={{ animationDelay: "0.9s" }}
+          <button
+            className="carousel-control-prev prevBtn"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+            style={{ color: "#e0f7fa" }} // Light blue color for arrows
           >
-            <div className="blog-item bg-light rounded overflow-hidden">
-              <div className="blog-img position-relative overflow-hidden">
-                <img className="img-fluid" src={CampaignImg3} alt="Blog 3" />
-                <a
-                  className="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
-                  href="#"
-                >
-                  See Profile
-                </a>
-              </div>
-              <div className="p-4">
-                <div className="d-flex mb-3">
-                  <small className="me-3">
-                    <FaUser className="text-primary me-2" /> Company Name
-                  </small>
-                  <small>
-                    <FaCalendarAlt className="text-primary me-2" /> 01 Jan, 2045
-                  </small>
-                </div>
-                <h4 className="mb-3">StartUp Category</h4>
-                <p>StartUp Description</p>
-                <a className="text-uppercase" href="#">
-                  Read More <i className="bi bi-arrow-right"></i>
-                </a>
-                <div className="mt-3">
-                  <button
-                    className="btn btn-primary me-2"
-                    onClick={handleCampaignClick}
-                  >
-                    <FaBullhorn /> Campaign
-                  </button>
-                  <button className="btn btn-success">
-                    <FaHandsHelping /> Be Volunteers
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+              style={{
+                filter:
+                  "invert(40%) sepia(30%) saturate(2500%) hue-rotate(160deg) brightness(95%) contrast(85%)",
+              }} // Light blue filter
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next nextBtn "
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+            style={{ color: "#e0f7fa" }} // Light blue color for arrows
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+              style={{
+                filter:
+                  "invert(40%) sepia(30%) saturate(2500%) hue-rotate(160deg) brightness(95%) contrast(85%)",
+              }} // Light blue filter
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>

@@ -62,7 +62,14 @@ img.BusinessImg {
 .BusinessSocialLinks {
   display: flex;
   gap: 20px;
+  transform: translate(27px, 0);
 }
 .BusinessSocialLinks a {
   text-decoration: none;
+}
+.category {
+  transform: translate(27px, 0);
+}
+.BusinessDesc {
+  transform: translate(0, 40px) !important;
 }

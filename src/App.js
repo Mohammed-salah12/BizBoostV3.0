@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import "font-awesome/css/font-awesome.min.css";
 import "./index.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -54,7 +55,10 @@ function App() {
               </>
             }
           />
-          <Route path="/CampaignDetails" element={<CampaignDetails />} />
+          <Route
+            path="/campaignDetails/:username"
+            element={<CampaignDetails />}
+          />
           <Route path="/contact" element={<Contact />} />
           <Route path="/campaign-pg" element={<CampaignPg />} />
           <Route path="/about-pg" element={<AboutPg />} />
@@ -73,8 +77,5 @@ function App() {
     </Router>
   );
 }
-const handleViewProfile = (username) => {
-  console.log("Navigating to profile:", username);
-  navigate(`/profile/${username}`);
-};
+
 export default App;

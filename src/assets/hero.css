@@ -253,3 +253,14 @@ h6,
 h1.active-logo {
   background: var(--primary);
 }
+.prevBtn {
+  transform: translate(-100px, 0);
+}
+.nextBtn {
+  transform: translate(100px, 0);
+}
+.showProfileBtn {
+  transform: translate(0, -190px) !important;
+  background-color: #06a3da !important;
+  color: #ffffff !important;
+}

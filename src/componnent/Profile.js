@@ -4,6 +4,14 @@ import "../assets/profile.css";
 import profilesData from "../constants/profilesData.js";
 import { useParams } from "react-router-dom";
 
+// Helper function to truncate text to a specified number of words
+const truncateText = (text, wordCount) => {
+  if (!text) return "";
+  const words = text.split(" ");
+  if (words.length <= wordCount) return text;
+  return words.slice(0, wordCount).join(" ") + "...";
+};
+
 export const Profile = () => {
   const { username } = useParams(); // Get username from URL params
   const [showMore, setShowMore] = useState(false);
@@ -60,70 +68,75 @@ export const Profile = () => {
               />
             </div>
             <div className="contentHolder">
-              <div className="NameAndFollowBtn">
-                <h1>{profile.name || "Name Not Available"}</h1>
-                <button onClick={handleInterestClick} className="interestBtn">
-                  {interestText}
-                </button>
-              </div>
-              <div className="interestedInOn">
-                <div className="interested">
-                  <p className="pProfile">interest</p>
-                  <h2 className="numOfInterest">323</h2>
+              <div className="everythingHolder">
+                <div className="NameAndFollowBtn">
+                  <h1>{profile.name || "Name Not Available"}</h1>
+                  <button onClick={handleInterestClick} className="interestBtn">
+                    {interestText}
+                  </button>
                 </div>
-                <div className="interestedIn">
-                  <p className="pProfile">interestedIn</p>
-                  <h2 className="numOfInterestIn">323</h2>
+                <div className="interestedInOn">
+                  <div className="interested">
+                    <p className="pProfile">interest</p>
+                    <h2 className="numOfInterest">323</h2>
+                  </div>
+                  <div className="interestedIn">
+                    <p className="pProfile">interestedIn</p>
+                    <h2 className="numOfInterestIn">323</h2>
+                  </div>
                 </div>
-              </div>
-              <div className="aboutMe">
-                <p>{profile.about || "About information not available"}</p>
-                {showMore && (
+                <div className="aboutMe">
                   <p>
-                    This additional content is only visible when "Read More" is
-                    clicked. You can add more details about the person's
-                    background, interests, or any other information you'd like
-                    to display.
+                    {showMore
+                      ? profile.about || "About information not available"
+                      : truncateText(profile.about, 7)}
                   </p>
-                )}
-                <button onClick={handleReadMore} className="showmoreBtn">
-                  {showMore ? "Read Less" : "Read More"}
-                </button>
-                <div className="skillTags">
-                  {(profile.skills || []).map((skill, index) => (
-                    <span key={index} className="skillTag">
-                      {skill}
-                    </span>
-                  ))}
+                  {!showMore && (
+                    <button onClick={handleReadMore} className="showmoreBtn">
+                      Read More
+                    </button>
+                  )}
+                  {showMore && (
+                    <button onClick={handleReadMore} className="showmoreBtn">
+                      Read Less
+                    </button>
+                  )}
+                  <div className="skillTags">
+                    {(profile.skills || []).map((skill, index) => (
+                      <span key={index} className="skillTag">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="IconBox">
-              {profile.socialLinks && (
-                <>
-                  <a
-                    href={profile.socialLinks.github || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub className="icon" />
-                  </a>
-                  <a
-                    href={profile.socialLinks.linkedin || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedin className="icon" />
-                  </a>
-                  <a
-                    href={`mailto:${
-                      profile.socialLinks.email || "default@example.com"
-                    }`}
-                  >
-                    <FaEnvelope className="icon" />
-                  </a>
-                </>
-              )}
+              <div className="IconBox">
+                {profile.socialLinks && (
+                  <>
+                    <a
+                      href={profile.socialLinks.github || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub className="icon" />
+                    </a>
+                    <a
+                      href={profile.socialLinks.linkedin || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedin className="icon" />
+                    </a>
+                    <a
+                      href={`mailto:${
+                        profile.socialLinks.email || "default@example.com"
+                      }`}
+                    >
+                      <FaEnvelope className="icon" />
+                    </a>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

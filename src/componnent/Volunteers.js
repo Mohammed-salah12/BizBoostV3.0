@@ -4,6 +4,14 @@ import Sidebar from "./Sidebar";
 import "../assets/Volunteers.css";
 import profilesData from "../constants/profilesData.js";
 
+// Helper function to truncate text to a specified number of words
+const truncateText = (text, wordCount) => {
+  if (!text) return "";
+  const words = text.split(" ");
+  if (words.length <= wordCount) return text;
+  return words.slice(0, wordCount).join(" ") + "...";
+};
+
 const Volunteers = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -98,6 +106,12 @@ const Volunteers = () => {
                   />
                   <div className="companyDetails">
                     <h2 className="companyName">{profile.name}</h2>
+                    <p className="category">
+                      {/* Ensure profile.category is an array */}
+                      {Array.isArray(profile.category)
+                        ? profile.category.join(", ")
+                        : profile.category || "No categories available"}
+                    </p>
                     <div className="BusinessSocialLinks">
                       <a
                         href={profile.socialLinks?.github || "#"}
@@ -128,7 +142,7 @@ const Volunteers = () => {
               </div>
 
               <div className="BusinessDesc">
-                <p>{profile.about}</p>
+                <p>{truncateText(profile.about, 10)}</p>
               </div>
             </div>
           ))

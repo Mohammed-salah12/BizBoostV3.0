@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "../assets/campaignDetails.css";
-import BusinessContact from "../img/businessContact.jpg";
-import CompanyLogo from "../img/Funder.jpeg";
+import defaultProfileImg from "../img/Funder.jpeg"; // Use a default image for all profiles
+import profilesData from "../constants/profilesData";
 
 const CampaignDetails = () => {
+  const { username } = useParams(); // Extract username from URL parameters
   const [loading, setLoading] = useState(true);
   const [currentDonation, setCurrentDonation] = useState(5000);
-  const goal = 10000;
-  const supporters = 150;
+
+  // Find the profile based on the extracted username
+  const profile = profilesData.find((profile) => profile.username === username);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 300);
@@ -28,7 +31,8 @@ const CampaignDetails = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const progressPercentage = (currentDonation / goal) * 100;
+  const progressPercentage =
+    (currentDonation / (profile?.campaign.goal || 1)) * 100;
 
   return (
     <div>
@@ -41,15 +45,15 @@ const CampaignDetails = () => {
         </div>
       )}
 
-      {!loading && (
+      {!loading && profile && (
         <>
           <div className="containSidBarAndHeader">
             <div className="needsJustifiling">
-              <div className="container-fluid position-relative p-0 bg-header holder divHolder">
+              <div className="container-fluid position-relative p-0  holder divHolder">
                 <div
                   className="container-fluid py-5 bg-header"
                   style={{
-                    backgroundImage: `url(${BusinessContact})`,
+                    backgroundImage: `url(${defaultProfileImg})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
@@ -62,7 +66,7 @@ const CampaignDetails = () => {
                   <div className="row py-5">
                     <div className="col-12 pt-lg-5 mt-lg-5">
                       <h1 className="display-4 animate__animated animate__zoomIn">
-                        Campaign Name
+                        {profile.campaign.title}
                       </h1>
                       <a href="/" className="h5 text-white">
                         Home
@@ -76,25 +80,22 @@ const CampaignDetails = () => {
                 </div>
               </div>
 
-              <div className="col-lg-4">
+              <div className="col-lg-4 ">
                 <div className="campaign-sidebar sideBarHolder">
-                  <h2 className="mb-4">Campaign Title</h2>
+                  <h2 className="mb-4">{profile.campaign.title}</h2>
                   <div className="company-info mb-4">
                     <div className="company-header">
                       <img
-                        src={CompanyLogo}
+                        src={profile.profileImg}
                         alt="Company Logo"
                         className="company-logo"
                       />
-                      <h4 className="company-name">Company Name</h4>
+                      <h4 className="company-name">{profile.name}</h4>{" "}
+                      {/* Display the company name */}
                     </div>
                   </div>
-                  <p>
-                    Voluptua est takimata stet invidunt sed rebum nonumy stet,
-                    clita aliquyam dolores vero stet consetetur elitr takimata
-                    rebum sanctus. Sit sed accusam stet sit nonumy kasd diam
-                    dolores, sanctus lorem kasd duo dolor dolor vero sit et.
-                  </p>
+                  <p>{profile.campaign.about} </p>{" "}
+                  {/* Display the company about */}
                   <div className="mb-4">
                     <h4>Donation Progress</h4>
                     <div className="progress">
@@ -106,18 +107,23 @@ const CampaignDetails = () => {
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
-                        {progressPercentage.toFixed(2)}%
+                        {progressPercentage.toFixed(2)}%{" "}
+                        {/* Display progress */}
                       </div>
                     </div>
                     <p>
-                      <strong>Goal:</strong> ${goal.toLocaleString()}
+                      <strong>Goal:</strong> $
+                      {profile.campaign.goal.toLocaleString()}{" "}
+                      {/* Display the goal */}
                     </p>
                     <p>
                       <strong>Current Donation:</strong> $
                       {currentDonation.toLocaleString()}
                     </p>
                     <p>
-                      <strong>BOOSTERS:</strong> {supporters.toLocaleString()}
+                      <strong>BOOSTERS:</strong>{" "}
+                      {profile.campaign.supporters.toLocaleString()}{" "}
+                      {/* Display boosters */}
                     </p>
                     <div className="btns">
                       <button className="btn btn-primary mt-3">
@@ -138,16 +144,7 @@ const CampaignDetails = () => {
                 <div className="row">
                   <div className="col-lg-8 flex-wrap pp">
                     <h2 className="mb-4">Main Page Content</h2>
-                    <p className="contentDes">
-                      Voluptua est takimataaw uoaouw houdhawou aoh awhwdahodh
-                      ouwuo aouh douahwod awohuo hawudh auoh wauo stet invidunt
-                      sed rebum nonumy stet, clita aliquyam dolores vero
-                      stejjjadiwhdipadhipaw pihi haipip iphi pawipip ipah
-                      ihahdip wipadhip whia ipdhwip dhaipwdpiw apiawiph
-                      dipawhipd hawiphdip wht consetetur elitr takimata rebum
-                      sanctus. Sit sed accusam stet sit nonumy kasd diam
-                      dolores, sanctus lorem kasd duo dolor dolor vero sit et.
-                    </p>
+                    <p className="contentDes">{profile.campaign.description}</p>
                   </div>
                 </div>
               </div>
@@ -157,74 +154,27 @@ const CampaignDetails = () => {
                   <div className="col-lg-8">
                     <div className="mb-5">
                       <div className="section-title-1 section-title-sm position-relative pb-3 mb-4">
-                        <h3 className="mb-0">3 Comments</h3>
+                        <h3 className="mb-0">Comments</h3>
                       </div>
-                      <div className="d-flex mb-4">
-                        <img
-                          src={CompanyLogo}
-                          className="img-fluid rounded"
-                          style={{ width: "45px", height: "45px" }}
-                          alt="User"
-                        />
-                        <div className="ps-3">
-                          <h6>
-                            <a href="">John Doe</a>{" "}
-                            <small>
-                              <i>01 Jan 2045</i>
-                            </small>
-                          </h6>
-                          <p>
-                            Sadipscing labore amet rebum est et justo gubergren.
-                            Et eirmod ipsum sit diam ut magna lorem. Nonumy vero
-                            labore lorem sanctus rebum et lorem magna kasd, stet
-                            amet magna accusam consetetur eirmod.
-                          </p>
+                      {profile.campaign.comments.map((comment, index) => (
+                        <div className="d-flex mb-4" key={index}>
+                          <img
+                            src={comment.photo}
+                            className="img-fluid rounded"
+                            style={{ width: "45px", height: "45px" }}
+                            alt="User"
+                          />
+                          <div className="ps-3">
+                            <h6>
+                              <a href="">{comment.name}</a>{" "}
+                              <small>
+                                <i>{comment.date}</i>
+                              </small>
+                            </h6>
+                            <p>{comment.message}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="d-flex mb-4">
-                        <img
-                          src={CompanyLogo}
-                          className="img-fluid rounded"
-                          style={{ width: "45px", height: "45px" }}
-                          alt="User"
-                        />
-                        <div className="ps-3">
-                          <h6>
-                            <a href="">Jane Doe</a>{" "}
-                            <small>
-                              <i>02 Jan 2045</i>
-                            </small>
-                          </h6>
-                          <p>
-                            Sadipscing labore amet rebum est et justo gubergren.
-                            Et eirmod ipsum sit diam ut magna lorem. Nonumy vero
-                            labore lorem sanctus rebum et lorem magna kasd, stet
-                            amet magna accusam consetetur eirmod.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="d-flex mb-4">
-                        <img
-                          src={CompanyLogo}
-                          className="img-fluid rounded"
-                          style={{ width: "45px", height: "45px" }}
-                          alt="User"
-                        />
-                        <div className="ps-3">
-                          <h6>
-                            <a href="">Alice Smith</a>{" "}
-                            <small>
-                              <i>03 Jan 2045</i>
-                            </small>
-                          </h6>
-                          <p>
-                            Sadipscing labore amet rebum est et justo gubergren.
-                            Et eirmod ipsum sit diam ut magna lorem. Nonumy vero
-                            labore lorem sanctus rebum et lorem magna kasd, stet
-                            amet magna accusam consetetur eirmod.
-                          </p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                     <div className="mb-5">
                       <div className="section-title-1 section-title-sm position-relative pb-3 mb-4">

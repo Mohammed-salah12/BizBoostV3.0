@@ -15,11 +15,14 @@ div.profileContainer {
   background-position: center center;
   background-size: 100%;
 }
+.everythingHolder {
+  transform: translate(100px, -70px) !important;
+}
 div.profileContent {
   display: flex;
   justify-content: center;
   background-color: #fff;
-  min-height: 400px;
+  min-height: 400px !important;
   margin-top: 1000px;
   width: 95%;
   z-index: 1;
@@ -129,8 +132,8 @@ div.aboutMe {
   cursor: pointer;
 }
 div.latestProjects {
-  transform: translate(100px, 0);
-  margin-top: 80px;
+  transform: translate(100px, 0) !important;
+  margin-bottom: 100px !important;
   width: 90%;
   z-index: 1;
 }
