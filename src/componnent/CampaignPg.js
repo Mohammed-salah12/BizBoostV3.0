@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import "animate.css"; // Import animate.css for animations
-import VendorSlider from "./VendorSlider"; // Import the VendorSlider component
-import Footer from "./Footer"; // Import the Footer component
-import Navbar from "./Navbar"; // Import the Navbar component
-import CampaignPic from "../img/blog-1.jpg"; // Import the Campaign image
-import funds from "../videos/funds.mp4"; // Import the video
-import { MdVolunteerActivism } from "react-icons/md"; // Import the volunteer icon from react-icons
-import { AiOutlineTag } from "react-icons/ai"; // Import the tag icon from react-icons
-import { FaUser, FaCalendarAlt } from "react-icons/fa"; // Import user and calendar icons from react-icons
-import { BiArrowToRight } from "react-icons/bi"; // Import the alternative arrow icon
-import "animate.css/animate.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "animate.css";
+import { Link } from "react-router-dom";
+import VendorSlider from "./VendorSlider";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+import CampaignPic from "../img/blog-1.jpg";
+import funds from "../videos/funds.mp4";
+import { MdVolunteerActivism } from "react-icons/md";
+import { AiOutlineTag } from "react-icons/ai";
+import { FaUser, FaCalendarAlt } from "react-icons/fa";
+import { BiArrowToRight } from "react-icons/bi";
+import ProgressBar from "./ProgressBar";
+import profilesData from "../constants/profilesData";
 
 const CampaignPg = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading by using setTimeout
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 300); // Adjust time as needed
+    }, 300);
 
-    // Clean up timeout on component unmount
     return () => clearTimeout(timer);
   }, []);
 
@@ -41,7 +41,6 @@ const CampaignPg = () => {
 
   return (
     <div>
-      {/* Spinner Start */}
       {loading && (
         <div
           id="spinner"
@@ -50,13 +49,7 @@ const CampaignPg = () => {
           <div className="spinner"></div>
         </div>
       )}
-      {/* Spinner End */}
-
-      {/* Header Start */}
-      <div
-        className="position-relative"
-        style={{ height: "500px" }} // Adjust the height as needed
-      >
+      <div className="position-relative" style={{ height: "500px" }}>
         <video
           autoPlay
           muted
@@ -97,21 +90,18 @@ const CampaignPg = () => {
           </div>
         </div>
       </div>
-      {/* Header End */}
-
       <div className="container-fluid py-5">
         <div className="container py-5">
           <div className="row g-5">
-            {/* Blog List Start */}
             <div className="col-lg-8">
               <div className="row g-5">
-                {[...Array(8).keys()].map((_, index) => (
+                {profilesData.map((profile, index) => (
                   <div
                     className="col-md-6 animate__animated animate__slideInUp"
                     style={{
                       animationDelay: `${index % 2 === 0 ? "0.1s" : "0.6s"}`,
                     }}
-                    key={index}
+                    key={profile.username}
                   >
                     <div className="blog-item bg-light rounded overflow-hidden">
                       <div className="blog-img position-relative overflow-hidden">
@@ -127,61 +117,42 @@ const CampaignPg = () => {
                         <div className="d-flex mb-3">
                           <small className="me-3">
                             <FaUser className="text-primary me-2" />
-                            John Doe
+                            {profile.username}
                           </small>
                           <small>
                             <FaCalendarAlt className="text-primary me-2" />
-                            01 Jan, 2045
+                            {profile.campaign.date || "01 Jan, 2045"}
                           </small>
                         </div>
-                        <h4 className="mb-3">How to build a website</h4>
-                        <p>
-                          Dolor et eos labore stet justo sed est sed sed sed
-                          dolor stet amet
-                        </p>
-                        <a className="text-uppercase" href="#">
-                          Read More <BiArrowToRight />
-                        </a>
-                      </div>
-
-                      {/* Buttons Start */}
-                      <div className="p-4 d-flex justify-content-between">
-                        <a
-                          href="#campaign"
-                          className="btn btn-primary d-flex align-items-center py-2 px-4"
+                        <h4 className="mb-3">{profile.campaign.title}</h4>
+                        <p>{profile.campaign.description}</p>
+                        <ProgressBar
+                          progress={
+                            (profile.campaign.supporters /
+                              profile.campaign.goal) *
+                              100 || 0
+                          }
+                        />
+                        <Link
+                          to={`/campaignDetails/${profile.username}`}
+                          className="btn btn-primary d-flex align-items-center py-3 px-4"
                           style={{
-                            fontSize: "14px",
+                            fontSize: "18px",
                             backgroundColor: "#007bff",
                             border: "none",
+                            fontWeight: "bold",
                           }}
                         >
-                          <FaCalendarAlt className="me-2" />
-                          Campaign
-                        </a>
-                        <a
-                          href="#volunteer"
-                          className="btn btn-success d-flex align-items-center py-2 px-4"
-                          style={{
-                            fontSize: "14px",
-                            backgroundColor: "#28a745",
-                            border: "none",
-                          }}
-                        >
-                          <MdVolunteerActivism className="me-2" />
-                          Be A Volunteer
-                        </a>
+                          Boost Startup <BiArrowToRight />
+                        </Link>
                       </div>
-                      {/* Buttons End */}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            {/* Blog List End */}
 
-            {/* Sidebar Start */}
             <div className="col-lg-4">
-              {/* Search Form Start */}
               <div
                 className="mb-5 animate__animated animate__slideInUp"
                 style={{ animationDelay: "0.1s" }}
@@ -197,9 +168,7 @@ const CampaignPg = () => {
                   </button>
                 </div>
               </div>
-              {/* Search Form End */}
 
-              {/* Category Start */}
               <div
                 className="mb-5 animate__animated animate__slideInUp"
                 style={{ animationDelay: "0.1s" }}
@@ -207,62 +176,63 @@ const CampaignPg = () => {
                 <div className="section-title section-title-sm position-relative pb-3 mb-4">
                   <h3 className="mb-0">Categories</h3>
                 </div>
-                <div className="link-animated">
+                <div className="link-animated d-flex flex-column justify-content-start">
                   <a
                     href="#"
-                    className="d-flex justify-content-between align-items-center py-2"
+                    className="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2"
                   >
-                    <span>Web Design</span>
-                    <span className="text-primary">50</span>
+                    <AiOutlineTag className="text-primary me-2" />
+                    Web Design
                   </a>
                   <a
                     href="#"
-                    className="d-flex justify-content-between align-items-center py-2"
+                    className="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2"
                   >
-                    <span>Web Development</span>
-                    <span className="text-primary">35</span>
+                    <AiOutlineTag className="text-primary me-2" />
+                    Web Development
                   </a>
                   <a
                     href="#"
-                    className="d-flex justify-content-between align-items-center py-2"
+                    className="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2"
                   >
-                    <span>Graphic Design</span>
-                    <span className="text-primary">20</span>
+                    <AiOutlineTag className="text-primary me-2" />
+                    Mobile App
                   </a>
                 </div>
               </div>
-              {/* Category End */}
 
-              {/* Tags Start */}
               <div
-                className="animate__animated animate__slideInUp"
+                className="mb-5 animate__animated animate__slideInUp"
                 style={{ animationDelay: "0.1s" }}
               >
                 <div className="section-title section-title-sm position-relative pb-3 mb-4">
-                  <h3 className="mb-0">Tags</h3>
+                  <h3 className="mb-0">Latest Campaigns</h3>
                 </div>
-                <div className="d-flex flex-wrap">
-                  <a href="#" className="btn btn-light btn-sm m-1">
-                    <AiOutlineTag className="me-2" />
-                    Design
-                  </a>
-                  <a href="#" className="btn btn-light btn-sm m-1">
-                    <AiOutlineTag className="me-2" />
-                    Development
-                  </a>
-                  <a href="#" className="btn btn-light btn-sm m-1">
-                    <AiOutlineTag className="me-2" />
-                    Marketing
-                  </a>
-                  <a href="#" className="btn btn-light btn-sm m-1">
-                    <AiOutlineTag className="me-2" />
-                    SEO
-                  </a>
-                </div>
+                {profilesData.map((profile, index) => (
+                  <div className="d-flex mb-3" key={profile.username}>
+                    <img
+                      src={CampaignPic}
+                      alt=""
+                      className="img-fluid"
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <div className="ms-3">
+                      <a href="#" className="h6 d-block mb-2">
+                        {profile.campaign.title}
+                      </a>
+                      <small>
+                        <FaCalendarAlt className="text-primary me-2" />
+                        {profile.campaign.date || "01 Jan, 2045"}
+                      </small>
+                    </div>
+                  </div>
+                ))}
               </div>
-              {/* Tags End */}
             </div>
-            {/* Sidebar End */}
           </div>
         </div>
       </div>

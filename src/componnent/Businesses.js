@@ -109,9 +109,17 @@ const Businesses = () => {
                     src={business.profileImg}
                     alt={business.name}
                     className="BusinessImg"
+                    onClick={() => handleViewProfile(business.username)}
+                    style={{ cursor: "pointer" }}
                   />
                   <div className="companyDetails">
-                    <h2 className="companyName">{business.name}</h2>
+                    <h2
+                      className="companyName"
+                      onClick={() => handleViewProfile(business.username)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {business.name}
+                    </h2>
                     <h4 className="founderName">
                       {business.role === "Business" ? "Founder: " : "Role: "}
                       {business.name}
@@ -128,7 +136,7 @@ const Businesses = () => {
               </div>
 
               <div className="BusinessDesc">
-                <p>{truncateText(business.about, 10)}</p>
+                <p>{truncateText(business.about, 20)}</p>
               </div>
             </div>
           ))

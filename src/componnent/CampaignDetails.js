@@ -49,7 +49,7 @@ const CampaignDetails = () => {
         <>
           <div className="containSidBarAndHeader">
             <div className="needsJustifiling">
-              <div className="container-fluid position-relative p-0  holder divHolder">
+              <div className="container-fluid position-relative p-0 holder divHolder">
                 <div
                   className="container-fluid py-5 bg-header"
                   style={{
@@ -80,7 +80,7 @@ const CampaignDetails = () => {
                 </div>
               </div>
 
-              <div className="col-lg-4 ">
+              <div className="col-lg-4">
                 <div className="campaign-sidebar sideBarHolder">
                   <h2 className="mb-4">{profile.campaign.title}</h2>
                   <div className="company-info mb-4">
@@ -90,12 +90,10 @@ const CampaignDetails = () => {
                         alt="Company Logo"
                         className="company-logo"
                       />
-                      <h4 className="company-name">{profile.name}</h4>{" "}
-                      {/* Display the company name */}
+                      <h4 className="company-name">{profile.name}</h4>
                     </div>
                   </div>
-                  <p>{profile.campaign.about} </p>{" "}
-                  {/* Display the company about */}
+                  <p>{profile.campaign.about}</p>
                   <div className="mb-4">
                     <h4>Donation Progress</h4>
                     <div className="progress">
@@ -107,14 +105,14 @@ const CampaignDetails = () => {
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
-                        {progressPercentage.toFixed(2)}%{" "}
-                        {/* Display progress */}
+                        <span className="progress-bar-text">
+                          {progressPercentage.toFixed(2)}%
+                        </span>
                       </div>
                     </div>
                     <p>
                       <strong>Goal:</strong> $
-                      {profile.campaign.goal.toLocaleString()}{" "}
-                      {/* Display the goal */}
+                      {profile.campaign.goal.toLocaleString()}
                     </p>
                     <p>
                       <strong>Current Donation:</strong> $
@@ -122,8 +120,7 @@ const CampaignDetails = () => {
                     </p>
                     <p>
                       <strong>BOOSTERS:</strong>{" "}
-                      {profile.campaign.supporters.toLocaleString()}{" "}
-                      {/* Display boosters */}
+                      {profile.campaign.supporters.toLocaleString()}
                     </p>
                     <div className="btns">
                       <button className="btn btn-primary mt-3">
