@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/BizBoostV3.0/static/css/main.b49f429a.css",
-    "main.js": "/BizBoostV3.0/static/js/main.385bfc23.js",
+    "main.css": "/BizBoostV3.0/static/css/main.11177ee4.css",
+    "main.js": "/BizBoostV3.0/static/js/main.a93ddb57.js",
     "static/js/453.ca47a58f.chunk.js": "/BizBoostV3.0/static/js/453.ca47a58f.chunk.js",
     "static/media/contactus.mp4": "/BizBoostV3.0/static/media/contactus.f5c55fa516453be3236d.mp4",
     "static/media/bussiness.mp4": "/BizBoostV3.0/static/media/bussiness.8145d78d3db21b78d525.mp4",
@@ -22,9 +22,6 @@
     "static/media/feature.jpg": "/BizBoostV3.0/static/media/feature.b8fa3a1d15793321bc06.jpg",
     "static/media/about.jpg": "/BizBoostV3.0/static/media/about.375ed93a3c75edb9ed80.jpg",
     "static/media/team-3.jpg": "/BizBoostV3.0/static/media/team-3.e665709987982790ed54.jpg",
-    "static/media/blog-2.jpg": "/BizBoostV3.0/static/media/blog-2.ea6300b3228592aaca85.jpg",
-    "static/media/bruce-mars.jpg": "/BizBoostV3.0/static/media/bruce-mars.8a606c4a6dab54c9ceff.jpg",
-    "static/media/blog-3.jpg": "/BizBoostV3.0/static/media/blog-3.b8d953c4371c38939cfe.jpg",
     "static/media/blog-1.jpg": "/BizBoostV3.0/static/media/blog-1.5150f0b19ffe23a26519.jpg",
     "static/media/team-2.jpg": "/BizBoostV3.0/static/media/team-2.a56401fe6b75b6c7b44c.jpg",
     "static/media/slick.svg": "/BizBoostV3.0/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -32,12 +29,12 @@
     "static/media/slick.ttf": "/BizBoostV3.0/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/BizBoostV3.0/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/BizBoostV3.0/index.html",
-    "main.b49f429a.css.map": "/BizBoostV3.0/static/css/main.b49f429a.css.map",
-    "main.385bfc23.js.map": "/BizBoostV3.0/static/js/main.385bfc23.js.map",
+    "main.11177ee4.css.map": "/BizBoostV3.0/static/css/main.11177ee4.css.map",
+    "main.a93ddb57.js.map": "/BizBoostV3.0/static/js/main.a93ddb57.js.map",
     "453.ca47a58f.chunk.js.map": "/BizBoostV3.0/static/js/453.ca47a58f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b49f429a.css",
-    "static/js/main.385bfc23.js"
+    "static/css/main.11177ee4.css",
+    "static/js/main.a93ddb57.js"
   ]
 }
